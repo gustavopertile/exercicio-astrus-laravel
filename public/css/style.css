@@ -1,3 +1,4 @@
+/* Geral */
 * {
     font-family: Montserrat;
     font-weight: 300;
@@ -17,6 +18,17 @@ body {
     padding: 0;
 }
 
+.msg {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+/* navbar */
 #navbar img {
     width: 40px;
 }
@@ -25,6 +37,7 @@ body {
     color: aqua;
 }
 
+/* Área de pesquisa */
 #search-container {
     background-image: url("../img/apple.jpeg");
     background-size: cover;
@@ -43,4 +56,83 @@ body {
 #search-container form {
     width: 50%;
     margin: 0 auto;
+}
+
+/* Produtos (cards) */
+#produtos-container {
+    padding: 50px;
+}
+
+#produtos-container h2 {
+    margin-bottom: 10px;
+}
+
+#produtos-container .subtitle {
+    margin-bottom: 30px;
+}
+
+#cards-container {
+    display: flex;
+}
+
+#produtos-container .card {
+    flex: 1 1 0;
+    max-width: 20%;
+    min-width: 15%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#produtos-container img {
+    max-height: 450px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .card-title {
+    color: #212121;
+    font: 20px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #212121;
+    color: white;
+    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+/* Telas de cadastro */
+#cadastrar-produtos-container,
+#categorias-existentes,
+#adicionar-categorias-container {
+    padding: 30px;
+}
+
+#cadastrar-produtos-container label,
+#adicionar-categorias-container label {
+    font-size: 18px;
+}
+
+#cadastrar-produtos-container input,
+#cadastrar-produtos-container select,
+#cadastrar-produtos-container textarea,
+#adicionar-categorias-container input,
+#adicionar-categorias-container textarea {
+    font-size: 15px;
+}
+
+#botao-cadastrar {
+    display: flex;
+    margin: 20px auto;
 }

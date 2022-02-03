@@ -8,15 +8,15 @@
     <div id="search-container" class="col-md-12">
         <h1>Busque um produto</h1>
         <form action="">
-            <input type="text" id="search" name="search" class="form-control" placeholder="Procurar..."=>
+            <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
         </form>
     </div>
 
     <div id="produtos-container" class="col-md-12">
         <h2>
-            <ion-icon name="logo-electron"></ion-icon>Produtos Disponíveis!
+            <ion-icon name="logo-react"></ion-icon> Produtos Disponíveis!
         </h2>
-        <p>Corra antes que alguém compre antes que você!</p>
+        <p class="subtitle">Corra antes que alguém compre antes que você!</p>
         <div id="cards-container" class="row">
             @foreach ($produtos as $produto)
                 <div class="card col-md-3">
@@ -31,8 +31,7 @@
             @endforeach
         </div>
     </div>
-
-    <div>
+    {{-- <div>
         @foreach ($categorias as $categoria)
             <p>{{ $categoria->idCategoria }} -- {{ $categoria->dsCategoria }}</p>
         @endforeach
@@ -43,5 +42,5 @@
             <p>{{ $imagem->idImagem }} -- {{ $imagem->dsImagem }}</p>
             <p>{{ $imagem->nomeDoArquivo }} -- {{ $imagem->idProduto }}</p>
         @endforeach
-    </div>
+    </div> --}}
 @endsection

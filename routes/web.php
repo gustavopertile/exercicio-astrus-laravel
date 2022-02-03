@@ -20,5 +20,7 @@ Route::get('/', [EventController::class, 'index']);
 Route::get('/produtos', [EventController::class, 'produtos']);
 
 Route::get('/produtos/cadastrar', [EventController::class, 'cadastrar']);
+Route::post('/produtos', [EventController::class, 'store']);
 
 Route::get('/categorias', [EventController::class, 'categorias']);
+Route::post('categorias', [EventController::class, 'adicionarCategoria']);

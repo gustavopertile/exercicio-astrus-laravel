@@ -26,7 +26,8 @@ class EventController extends Controller
 
     public function cadastrar()
     {
-        return view('produtos.cadastrar');
+        $categorias = Categoria::all();
+        return view('produtos.cadastrar', ['categorias' => $categorias]);
     }
 
     public function produtos()
@@ -44,5 +45,32 @@ class EventController extends Controller
     {
         $categorias = Categoria::all();
         return view('produtos.categorias', ['categorias' => $categorias]);
+    }
+
+
+    public function store(Request $request)
+    {
+
+        $produto = new Produto;
+
+        $produto->nmProduto = $request->nmProduto;
+        $produto->dsProduto = $request->dsProduto;
+        $produto->idCategoria = $request->idCategoria;
+
+        $produto->save();
+
+        return redirect('/')->with('msg', 'Produto cadastrado com sucesso!');
+    }
+
+    public function adicionarCategoria(Request $request)
+    {
+
+        $categoria = new Categoria;
+
+        $categoria->dsCategoria = $request->dsCategoria;
+
+        $categoria->save();
+
+        return redirect('/categorias')->with('msg', 'Marca adicionada com sucesso!');
     }
 }

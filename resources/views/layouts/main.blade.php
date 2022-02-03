@@ -21,31 +21,41 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"">
-            <div class="      collapse navbar-collapse" id="navbar">
-            <a href="/" class="navbar-brand">
-                <img class='logo' src="/../img/logo.svg" alt="Technology Center">
-            </a>
-            <a class="navbar-brand" href="/">Technology Center</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/produtos" class="nav-link">Produtos</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/categorias" class="nav-link">Categorias</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/produtos/cadastrar" class="nav-link">Cadastro de Produtos</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbar">
+                <a href="/" class="navbar-brand">
+                    <img class='logo' src="/../img/logo.svg" alt="Technology Center">
+                </a>
+                <a class="navbar-brand" href="/">Technology Center</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/produtos" class="nav-link">Produtos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/categorias" class="nav-link">Marcas</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/produtos/cadastrar" class="nav-link">Cadastro de Produtos</a>
+                    </li>
+                </ul>
+            </div>
             </div>
         </nav>
     </header>
-    @yield('content')
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                @if (session('msg'))
+                    <p class="msg">{{ session('msg') }}</p>
+                @endif
+                @yield('content')
+            </div>
+        </div>
+    </main>
     <footer>
         <p>Technology Center &copy; 2020</p>
     </footer>

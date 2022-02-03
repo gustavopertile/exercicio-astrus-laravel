@@ -5,10 +5,10 @@
 @section('content')
 
     <h1>
-        <ion-icon name="logo-electron"></ion-icon>Tela de produtos
+        <ion-icon name="logo-react"></ion-icon>Tela de produtos
     </h1>
 
-    <div>
+    {{-- <div>
         @foreach ($produtos as $produto)
             <p>{{ $produto->nmProduto }} -- {{ $produto->dsProduto }}</p>
         @endforeach
@@ -19,5 +19,5 @@
             <p>{{ $imagem->idImagem }} -- {{ $imagem->dsImagem }}</p>
             <p>{{ $imagem->nomeDoArquivo }} -- {{ $imagem->idProduto }}</p>
         @endforeach
-    </div>
+    </div> --}}
 @endsection
