@@ -21,10 +21,4 @@ Route::get('/produtos', [EventController::class, 'produtos']);
 
 Route::get('/produtos/cadastrar', [EventController::class, 'cadastrar']);
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/produtos_teste/{id?}', function ($id = null) {
-    return view('product', ['id' => $id]);
-});
+Route::get('/categorias', [EventController::class, 'categorias']);

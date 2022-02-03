@@ -1,10 +1,46 @@
 * {
     font-family: Montserrat;
+    font-weight: 300;
 }
-h1 {
-    color: rgb(4, 64, 88);
+
+body {
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.row {
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0;
 }
 
 #navbar img {
-    width: 50px;
+    width: 40px;
+}
+
+#navbar a:hover {
+    color: aqua;
+}
+
+#search-container {
+    background-image: url("../img/apple.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+    padding: 50px;
+    text-align: center;
+}
+
+#search-container h1 {
+    color: black;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+#search-container form {
+    width: 50%;
+    margin: 0 auto;
 }

@@ -4,28 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Produto;
+use App\Models\Categoria;
+use App\Models\Imagem;
+
 class EventController extends Controller
 {
     public function index()
     {
 
-        $nome = "Gustavo";
-        $idade = 20;
+        $produtos = Produto::all();
+        $categorias = Categoria::all();
+        $imagens = Imagem::all();
 
-        $arr = [1, 2, 3, 4, 5];
-
-        $nomes = ["Matheus", "Maria", "João", "Saulo"];
-
-        return view(
-            'welcome',
-            [
-                'nome' => $nome,
-                'idade' => $idade,
-                'profissao' => 'Programador',
-                'arr' => $arr,
-                'nomes' => $nomes
-            ]
-        );
+        return view('welcome', [
+            'produtos' => $produtos,
+            'categorias' => $categorias,
+            'imagens' => $imagens
+        ]);
     }
 
     public function cadastrar()
@@ -35,7 +31,18 @@ class EventController extends Controller
 
     public function produtos()
     {
-        $busca = request('search');
-        return view('produtos', ['busca' => $busca]);
+        $produtos = Produto::all();
+        $imagens = Imagem::all();
+
+        return view('produtos', [
+            'produtos' => $produtos,
+            'imagens' => $imagens
+        ]);
+    }
+
+    public function categorias()
+    {
+        $categorias = Categoria::all();
+        return view('produtos.categorias', ['categorias' => $categorias]);
     }
 }
