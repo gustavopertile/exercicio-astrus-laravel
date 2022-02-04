@@ -8,8 +8,12 @@
         <h1>
             <ion-icon name="logo-electron"></ion-icon> Cadastre o Produto
         </h1>
-        <form action="/produtos" method="POST">
+        <form action="/produtos" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+                <label for="imagem">Imagem do Produto:</label>
+                <input class="form-control" type="file" id="imagem" name="imagem">
+            </div>
             <div class="form-group">
                 <label for="nmProduto">Produto:</label>
                 <input type="text" class="form-control" id="nmProduto" name="nmProduto" placeholder="Modelo do celular">
