@@ -39,7 +39,7 @@ body {
 
 /* Área de pesquisa */
 #search-container {
-    background-image: url("../img/apple.jpeg");
+    background-image: url("../img/loja_apple_corte.jpeg");
     background-size: cover;
     background-position: center;
     height: 700px;
@@ -48,7 +48,7 @@ body {
 }
 
 #search-container h1 {
-    color: black;
+    color: white;
     margin-bottom: 30px;
     font-weight: 900;
 }
@@ -65,11 +65,14 @@ body {
 
 #produtos-container h2 {
     margin-bottom: 10px;
+    text-align: center;
+    font-size: 50px;
 }
 
 #produtos-container .subtitle,
 #produtos-container .subtitle-produtos {
     margin-bottom: 30px;
+    text-align: center;
 }
 
 #cards-container {
@@ -181,4 +184,44 @@ footer p {
 .botao {
     display: flex;
     justify-content: center;
+}
+
+/* dashboard */
+
+.dashboard-produtos-container,
+.dashboard-categorias-container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.dashboard-produtos-container h1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.dashboard-produtos-container form,
+.dashboard-categorias-container form {
+    display: inline-block;
+}
+
+.cadastro {
+    margin: 10px auto;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    margin: 20px auto;
+    width: 20%;
+}
+
+.cadastro:hover {
+    font-size: 110%;
+    color: rgb(160, 160, 160);
+}
+
+/* edit page */
+
+.img-preview {
+    height: 700px;
+    margin: auto;
+    display: block;
 }

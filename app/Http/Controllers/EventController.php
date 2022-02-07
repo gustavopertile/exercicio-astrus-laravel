@@ -14,27 +14,46 @@ class EventController extends Controller
     public function index()
     {
 
-        $produtos = Produto::all();
-        $categorias = Categoria::all();
-        $imagens = Imagem::all();
+        // $produtos = Produto::all();
+        // $categorias = Categoria::all();
+        // $imagens = Imagem::all();
 
-        $produtosImagens = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->get();
+        // $produtosImagens = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->get();
 
-        $novidades = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->inRandomOrder()->limit(6)->get();
+        $search = request('search');
+
+        if ($search) {
+            $produtos = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->where([
+                ['nmProduto', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $produtos = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->inRandomOrder()->limit(6)->get();
+        }
 
         return view('welcome', [
             'produtos' => $produtos,
-            'categorias' => $categorias,
-            'imagens' => $imagens,
-            'produtosImagens' => $produtosImagens,
-            'novidades' => $novidades
+            'search' => $search
         ]);
     }
 
-    public function cadastrar()
+    public function dashboard()
     {
+        $produtos = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->join('categorias', 'produtos.idCategoria', '=', 'categorias.idCategoria')->get();
         $categorias = Categoria::all();
-        return view('produtos.cadastrar', ['categorias' => $categorias]);
+        return view('dashboard', [
+            'produtos' => $produtos,
+            'categorias' => $categorias
+        ]);
+    }
+
+    public function cadastrarProduto()
+    {
+        $produtos = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->join('categorias', 'produtos.idCategoria', '=', 'categorias.idCategoria')->get();
+        $categorias = Categoria::all();
+        return view('produtos.cadastrar', [
+            'produtos' => $produtos,
+            'categorias' => $categorias
+        ]);
     }
 
     public function produtos()
@@ -50,13 +69,6 @@ class EventController extends Controller
             'produtosImagens' => $produtosImagens
         ]);
     }
-
-    public function categorias()
-    {
-        $categorias = Categoria::all();
-        return view('produtos.categorias', ['categorias' => $categorias]);
-    }
-
 
     public function store(Request $request)
     {
@@ -85,7 +97,7 @@ class EventController extends Controller
 
             $imagem->dsImagem = "Foto do " . $request->nmProduto;
             $imagem->nomeDoArquivo = $imagemNome;
-            $imagem->idProduto = $produto->id;
+            $imagem->idProduto = $produto->idProduto;
 
             $imagem->save();
         }
@@ -93,6 +105,28 @@ class EventController extends Controller
 
         // var_dump($id);
         return redirect('/')->with('msg', 'Produto cadastrado com sucesso!');
+    }
+
+    public function show($idProduto)
+    {
+
+        $produtoImagem = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->where('produtos.idProduto', $idProduto)->first();
+
+        // $produto = Produto::findOrFail($idProduto);
+
+        return view('show', ['produtoImagem' => $produtoImagem]);
+    }
+
+
+    public function categorias()
+    {
+        $categorias = Categoria::all();
+        return view('produtos.categorias', ['categorias' => $categorias]);
+    }
+
+    public function addCategoriaPag()
+    {
+        return view('addcategoria');
     }
 
     public function adicionarCategoria(Request $request)
@@ -107,13 +141,78 @@ class EventController extends Controller
         return redirect('/categorias')->with('msg', 'Marca adicionada com sucesso!');
     }
 
-    public function show($idProduto)
+
+    public function destroy($idProduto)
     {
+        Produto::where([
+            ['produtos.idProduto', '=', $idProduto]
+        ])->delete();
 
-        $produtoImagem = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->where('produtos.idProduto', $idProduto)->first();
+        $imagemNome = Imagem::where([['imagems.idProduto', '=', $idProduto]])->first()->nomeDoArquivo;
 
-        // $produto = Produto::findOrFail($idProduto);
+        unlink(public_path('img/produtos' . '/' . $imagemNome));
 
-        return view('show', ['produtoImagem' => $produtoImagem]);
+        Imagem::where([['imagems.idProduto', '=', $idProduto]])->delete();
+
+
+        return redirect('/produtos')->with('msg', 'Produto excluído com sucesso!');
+    }
+
+    public function destroyCategoria($idCategoria)
+    {
+        Categoria::where([
+            ['categorias.idCategoria', '=', $idCategoria]
+        ])->delete();
+
+        return redirect('/categorias')->with('msg', 'Marca excluída com sucesso!');
+    }
+
+    public function edit($idProduto)
+    {
+        $produto = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->join('categorias', 'produtos.idCategoria', '=', 'categorias.idCategoria')->where('produtos.idProduto', $idProduto)->first();
+
+        $categorias = Categoria::all();
+
+        return view('produtos.edit', [
+            'produto' => $produto,
+            'categorias' => $categorias
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = request()->except(['_token', '_method']);
+
+        $imagem = new Imagem;
+
+        if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+
+            $requestImagem = $request->imagem;
+
+            $extensao = $requestImagem->extension();
+
+            $imagemNome = md5($requestImagem->getClientOriginalName() . strtotime("now")) . "." . $extensao;
+
+            $requestImagem->move(public_path('img/produtos'), $imagemNome);
+
+            Imagem::where([['imagems.idProduto', '=', $request->idProduto]])->delete();
+
+            $imagem->dsImagem = "Foto do " . $request->nmProduto;
+            $imagem->nomeDoArquivo = $imagemNome;
+            $imagem->idProduto = $request->idProduto;
+
+            $imagem->save();
+        }
+
+        // DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->where('produtos.idProduto', $request->idProduto)->update($data);
+
+        $produtoUpdate = Produto::find($request->idProduto);
+        $produtoUpdate->nmProduto = $request->nmProduto;
+        $produtoUpdate->dsProduto = $request->dsProduto;
+        $produtoUpdate->idCategoria = $request->idCategoria;
+        $produtoUpdate->update();
+
+
+        return redirect('/dashboard')->with('msg', 'Produto editado com sucesso!');
     }
 }

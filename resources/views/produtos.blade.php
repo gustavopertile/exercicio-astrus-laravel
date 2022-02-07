@@ -5,7 +5,7 @@
 @section('content')
     <div id="produtos-container" class="col-md-12">
         <h2 class="tituloProdutos">
-            <ion-icon name="logo-react"></ion-icon> Produtos disponíveis!
+            <ion-icon name="logo-react"></ion-icon> Produtos disponíveis
         </h2>
         <p class="subtitle-produtos">Corra! Promoções Imperdíveis!</p>
         <div id="cards-container" class="row">

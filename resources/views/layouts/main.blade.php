@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title')</title>
+    <link rel="icon" href="/img/logo_semfundo.png">
 
     <!-- Fonte do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
@@ -24,9 +25,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="collapse navbar-collapse" id="navbar">
                 <a href="/" class="navbar-brand">
-                    <img class='logo' src="/../img/logo.svg" alt="Technology Center">
+                    <img class='logo' src="/../img/logo_semfundo.png" alt="Technology Shop">
                 </a>
-                <a class="navbar-brand" href="/">Technology Center</a>
+                <a class="navbar-brand" href="/">Technology Shop</a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="/produtos" class="nav-link">Produtos</a>
@@ -39,7 +40,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="/produtos/cadastrar" class="nav-link">Cadastro de Produtos</a>
+                        <a href="/dashboard" class="nav-link">Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -57,7 +58,7 @@
         </div>
     </main>
     <footer>
-        <p>Technology Center &copy; 2020</p>
+        <p>Technology Shop &copy; 2020</p>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </body>

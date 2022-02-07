@@ -1,44 +1,32 @@
 @extends('layouts.main')
 
-@section('title', 'Categorias')
+@section('title', 'Marcas')
 
 @section('content')
-    <div id="categorias-existentes" class="col-md-6 offset-md-3">
-        <h1>
-            <ion-icon name="logo-react"></ion-icon>Marcas Existentes
-        </h1>
-
+    <div class="col-md-4 offset-md-4 dashboard-categorias-container">
+        <h2>
+            <ion-icon name="logo-ionitron"></ion-icon> Marcas Disponíveis
+        </h2>
         <table class="table table-light">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
+                    <th scope="col" class="icone-tabela">
+                        <ion-icon name="server-outline"></ion-icon>
+                    </th>
+                    <th class="col-5">Nome</th>
+                    <th class="col-2">ID</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($categorias as $categoria)
                     <tr>
-                        <th scope="row">{{ $categoria->idCategoria }}</th>
-                        <td>{{ $categoria->dsCategoria }}</td>
+                        <td scope="row">{{ $loop->index + 1 }}</td>
+                        <td class="col-7">{{ $categoria->dsCategoria }}</td>
+                        <td>{{ $categoria->idCategoria }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 
-    <div id="adicionar-categorias-container" class="col-md-6 offset-md-3">
-        <h1>
-            <ion-icon name="logo-electron"></ion-icon> Adicionar Marca
-        </h1>
-        <form action="/categorias" method="POST">
-            @csrf
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="dsCategoria">Nome:</label>
-                    <textarea class="form-control" id="dsCategoria" name="dsCategoria"
-                        placeholder="Nome da Marca"></textarea>
-                </div>
-                <input id="botao-cadastrar" type="submit" class="btn btn-primary" value="Cadastrar Marca">
-        </form>
-    </div>
 @endsection

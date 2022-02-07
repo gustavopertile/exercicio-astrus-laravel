@@ -2,12 +2,18 @@
 
 @section('title', 'Cadastrar Produto')
 
+{{-- <?php
+dump($produtos);
+die();
+?> --}}
+
 @section('content')
 
     <div id="cadastrar-produtos-container" class="col-md-6 offset-md-3">
         <h1>
-            <ion-icon name="logo-electron"></ion-icon> Cadastre o Produto
+            <ion-icon name="logo-electron"></ion-icon> Cadastro de Produtos
         </h1>
+
         <form action="/produtos" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
