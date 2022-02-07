@@ -181,8 +181,6 @@ class EventController extends Controller
 
     public function update(Request $request)
     {
-        $data = request()->except(['_token', '_method']);
-
         $imagem = new Imagem;
 
         if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
@@ -204,8 +202,6 @@ class EventController extends Controller
             $imagem->save();
         }
 
-        // DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->where('produtos.idProduto', $request->idProduto)->update($data);
-
         $produtoUpdate = Produto::find($request->idProduto);
         $produtoUpdate->nmProduto = $request->nmProduto;
         $produtoUpdate->dsProduto = $request->dsProduto;
@@ -214,5 +210,26 @@ class EventController extends Controller
 
 
         return redirect('/dashboard')->with('msg', 'Produto editado com sucesso!');
+    }
+
+    public function editCategoria($idCategoria)
+    {
+        $categorias = Categoria::where([
+            ['categorias.idCategoria', $idCategoria]
+        ])->first();
+
+        return view('editcategoria', [
+            'categorias' => $categorias
+        ]);
+    }
+
+    public function updateCategoria(Request $request)
+    {
+
+        $categoriaUpdate = Categoria::find($request->idCategoria);
+        $categoriaUpdate->dsCategoria = $request->dsCategoria;
+        $categoriaUpdate->update();
+
+        return redirect('/dashboard')->with('msg', 'Marca editada com sucesso!');
     }
 }

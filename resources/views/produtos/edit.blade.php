@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Editando:' . $produto->nmProduto)
+@section('title', 'Editando: ' . $produto->nmProduto)
 
 {{-- <?php
 dump($produtos);

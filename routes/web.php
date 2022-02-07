@@ -19,5 +19,9 @@ Route::post('/categorias/cadastrar', [EventController::class, 'adicionarCategori
 Route::get('/produtos/edit/{idProduto}', [EventController::class, 'edit']);
 Route::put('/produtos/update/{idProduto}', [EventController::class, 'update']);
 
+Route::get('/categorias/edit/{idCategoria}', [EventController::class, 'editCategoria']);
+Route::put('/categorias/update/{idCategoria}', [EventController::class, 'updateCategoria']);
+
+
 Route::delete('/produtos/{idProduto}', [EventController::class, 'destroy']);
 Route::delete('/categorias/{idCategoria}', [EventController::class, 'destroyCategoria']);

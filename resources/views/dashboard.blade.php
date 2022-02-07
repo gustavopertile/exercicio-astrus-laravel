@@ -82,7 +82,7 @@ die();
                         <td class="col-7">{{ $categoria->dsCategoria }}</td>
                         <td>{{ $categoria->idCategoria }}</td>
                         <td>
-                            <a href="#" class="btn btn-info edit-btn">
+                            <a href="/categorias/edit/{{ $categoria->idCategoria }}" class="btn btn-info edit-btn">
                                 <ion-icon name="create-outline"></ion-icon>Editar
                             </a>
                             <form action="/categorias/{{ $categoria->idCategoria }}" method="POST">
