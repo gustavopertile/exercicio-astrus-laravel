@@ -44,7 +44,8 @@ die();
                             <a href="/produtos/edit/{{ $produto->idProduto }}" class="btn btn-info edit-btn">
                                 <ion-icon name="create-outline"></ion-icon>Editar
                             </a>
-                            <form action="/produtos/{{ $produto->idProduto }}" method="POST">
+                            <form action="/produtos/{{ $produto->idProduto }}" method="POST"
+                                onsubmit="return confirm('Tem certeza que deseja remover {{ $produto->nmProduto }}?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger delete-btn">
@@ -85,7 +86,8 @@ die();
                             <a href="/categorias/edit/{{ $categoria->idCategoria }}" class="btn btn-info edit-btn">
                                 <ion-icon name="create-outline"></ion-icon>Editar
                             </a>
-                            <form action="/categorias/{{ $categoria->idCategoria }}" method="POST">
+                            <form action="/categorias/{{ $categoria->idCategoria }}" method="POST"
+                                onsubmit="return confirm('Tem certeza que deseja remover {{ $categoria->dsCategoria }}?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger delete-btn">
