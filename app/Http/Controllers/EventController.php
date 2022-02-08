@@ -13,13 +13,6 @@ class EventController extends Controller
 {
     public function index()
     {
-
-        // $produtos = Produto::all();
-        // $categorias = Categoria::all();
-        // $imagens = Imagem::all();
-
-        // $produtosImagens = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->get();
-
         $search = request('search');
 
         if ($search) {
@@ -104,7 +97,7 @@ class EventController extends Controller
 
 
         // var_dump($id);
-        return redirect('/')->with('msg', 'Produto cadastrado com sucesso!');
+        return redirect('/produtos')->with('msg', 'Produto cadastrado com sucesso!');
     }
 
     public function show($idProduto)

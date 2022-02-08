@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div id="adicionar-categorias-container" class="col-md-6 offset-md-3">
+    <div id="adicionar-categorias-container" class="col-md-4 offset-md-4">
         <h1>
             <ion-icon name="logo-electron"></ion-icon> Adicionar Marca
         </h1>

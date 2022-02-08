@@ -32,7 +32,6 @@ body {
 
 #navbar {
     display: flex;
-    justify-content: space-around;
     align-items: flex-start;
 }
 
@@ -42,6 +41,14 @@ body {
 
 #navbar a:hover {
     color: aqua;
+}
+
+#login {
+    display: flex;
+}
+
+#login ul {
+    margin-left: 10px;
 }
 
 /* Área de pesquisa */

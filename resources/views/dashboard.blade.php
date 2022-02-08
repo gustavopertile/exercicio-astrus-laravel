@@ -17,7 +17,7 @@ die();
         <h2>
             <ion-icon name="cube-outline"></ion-icon> Produtos
         </h2>
-        <a href="/produtos/cadastrar" class="nav-link btn btn-primary cadastro">Novo Produto</a>
+        <a href="/cadastrar-produto" class="nav-link btn btn-primary cadastro">Novo Produto</a>
         <table class="table table-light">
             <thead class="table-dark">
                 <tr>

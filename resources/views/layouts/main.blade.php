@@ -39,12 +39,40 @@
                         <a href="/categorias" class="nav-link">Marcas</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">Dashboard</a>
-                    </li>
-                </ul>
-            </div>
+                @auth
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">Dashboard</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a href="/logout" class="nav-link" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    Sair
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                @endauth
+
+                @guest
+
+                    <div id="login">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="/login" class="nav-link">Entrar</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="/register" class="nav-link">Cadastrar</a>
+                            </li>
+                        </ul>
+                    </div>
+                @endguest
             </div>
         </nav>
     </header>
