@@ -9,7 +9,7 @@ die();
 
 @section('content')
 
-    <div id="cadastrar-produtos-container" class="col-md-6 offset-md-3">
+    <div id="cadastrar-produtos-container" class="col-md-4 offset-md-4">
         <h1>
             <ion-icon name="logo-electron"></ion-icon> Cadastro de Produtos
         </h1>

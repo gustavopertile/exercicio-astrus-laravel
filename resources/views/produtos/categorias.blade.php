@@ -3,10 +3,10 @@
 @section('title', 'Marcas')
 
 @section('content')
-    <div class="col-md-4 offset-md-4 dashboard-categorias-container">
-        <h2>
+    <div class="col-md-4 offset-md-4 categorias-container">
+        <h1>
             <ion-icon name="logo-ionitron"></ion-icon> Marcas Disponíveis
-        </h2>
+        </h1>
         <table class="table table-light">
             <thead class="table-dark">
                 <tr>

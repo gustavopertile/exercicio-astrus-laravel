@@ -29,6 +29,13 @@ body {
 }
 
 /* navbar */
+
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
 #navbar img {
     width: 40px;
 }
@@ -135,6 +142,12 @@ footer p {
     padding: 30px;
 }
 
+#adicionar-categorias-container h1,
+#adicionar-categorias-container h2,
+#cadastrar-produtos-container h1 {
+    text-align: center;
+}
+
 #cadastrar-produtos-container label,
 #adicionar-categorias-container label {
     font-size: 18px;
@@ -181,6 +194,10 @@ footer p {
     margin: auto 0;
 }
 
+#image-container img {
+    max-height: 600px;
+}
+
 .botao {
     display: flex;
     justify-content: center;
@@ -192,6 +209,16 @@ footer p {
 .dashboard-categorias-container {
     margin-top: 100px;
     text-align: center;
+}
+
+.categorias-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.categorias-container h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
 }
 
 .dashboard-produtos-container h1 {

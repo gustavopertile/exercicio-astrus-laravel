@@ -185,6 +185,12 @@ class EventController extends Controller
 
         if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
 
+            $apagarImagemPasta = Imagem::where([['imagems.idProduto', $request->idProduto]])->first()->nomeDoArquivo;
+
+            unlink(public_path('img/produtos' . '/' . $apagarImagemPasta));
+
+            Imagem::where([['imagems.idProduto', '=', $request->idProduto]])->delete();
+
             $requestImagem = $request->imagem;
 
             $extensao = $requestImagem->extension();
@@ -193,7 +199,6 @@ class EventController extends Controller
 
             $requestImagem->move(public_path('img/produtos'), $imagemNome);
 
-            Imagem::where([['imagems.idProduto', '=', $request->idProduto]])->delete();
 
             $imagem->dsImagem = "Foto do " . $request->nmProduto;
             $imagem->nomeDoArquivo = $imagemNome;

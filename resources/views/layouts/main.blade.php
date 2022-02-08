@@ -23,11 +23,12 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="collapse navbar-collapse" id="navbar">
-                <a href="/" class="navbar-brand">
-                    <img class='logo' src="/../img/logo_semfundo.png" alt="Technology Shop">
-                </a>
-                <a class="navbar-brand" href="/">Technology Shop</a>
+            <div class="container-fluid" id="navbar">
+                <div id="imagemNavBar">
+                    <a href="/" class="navbar-brand">
+                        <img class='logo' src="/../img/logo_semfundo.png" alt="Technology Shop">
+                    </a><a class="navbar-brand" href="/">Technology Shop</a>
+                </div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="/produtos" class="nav-link">Produtos</a>

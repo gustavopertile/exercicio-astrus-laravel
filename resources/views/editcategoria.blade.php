@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <div id="adicionar-categorias-container" class="col-md-6 offset-md-3">
+    <div id="adicionar-categorias-container" class="col-md-4 offset-md-4">
         <h1>
-            <ion-icon name="logo-electron"></ion-icon> Editar {{ $categorias->dsCategoria }}
+            <ion-icon name="logo-electron"></ion-icon> Editar categoria {{ $categorias->dsCategoria }}
         </h1>
         <h2>Marca de id {{ $categorias->idCategoria }}</h2>
         <form action="/categorias/update/{{ $categorias->idCategoria }}" method="POST">

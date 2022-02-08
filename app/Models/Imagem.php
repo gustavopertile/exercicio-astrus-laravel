@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imagem extends Model
 {
+    protected $primaryKey = 'idImagem';
     public $timestamps = false;
     protected $guarded = [];
     use HasFactory;
