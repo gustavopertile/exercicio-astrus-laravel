@@ -39,6 +39,11 @@ body {
     width: 40px;
 }
 
+#navbar a {
+    font-weight: 400;
+    color: white;
+}
+
 #navbar a:hover {
     color: aqua;
 }

@@ -9,7 +9,7 @@
     <link rel="icon" href="/img/logo_semfundo.png">
 
     <!-- Fonte do Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&display=swap" rel="stylesheet">
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -50,7 +50,7 @@
                             <form action="/logout" method="POST">
                                 @csrf
                                 <a href="/logout" class="nav-link" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                    this.closest('form').submit();">
                                     Sair
                                 </a>
                             </form>
