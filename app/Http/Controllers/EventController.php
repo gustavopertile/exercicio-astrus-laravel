@@ -43,7 +43,7 @@ class EventController extends Controller
     {
         $produtos = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->join('categorias', 'produtos.idCategoria', '=', 'categorias.idCategoria')->get();
         $categorias = Categoria::all();
-        return view('produtos.cadastrar', [
+        return view('produtos.addproduto', [
             'produtos' => $produtos,
             'categorias' => $categorias
         ]);
@@ -56,7 +56,7 @@ class EventController extends Controller
 
         $produtosImagens = DB::table('produtos')->join('imagems', 'produtos.idProduto', '=', 'imagems.idProduto')->get();
 
-        return view('produtos', [
+        return view('produtos.produtos', [
             'produtos' => $produtos,
             'imagens' => $imagens,
             'produtosImagens' => $produtosImagens
@@ -107,19 +107,19 @@ class EventController extends Controller
 
         // $produto = Produto::findOrFail($idProduto);
 
-        return view('show', ['produtoImagem' => $produtoImagem]);
+        return view('produtos.show', ['produtoImagem' => $produtoImagem]);
     }
 
 
     public function categorias()
     {
         $categorias = Categoria::all();
-        return view('produtos.categorias', ['categorias' => $categorias]);
+        return view('categorias.categorias', ['categorias' => $categorias]);
     }
 
     public function addCategoriaPag()
     {
-        return view('addcategoria');
+        return view('categorias.addcategoria');
     }
 
     public function adicionarCategoria(Request $request)
@@ -166,7 +166,7 @@ class EventController extends Controller
 
         $categorias = Categoria::all();
 
-        return view('produtos.edit', [
+        return view('produtos.editproduto', [
             'produto' => $produto,
             'categorias' => $categorias
         ]);
@@ -216,7 +216,7 @@ class EventController extends Controller
             ['categorias.idCategoria', $idCategoria]
         ])->first();
 
-        return view('editcategoria', [
+        return view('categorias.editcategoria', [
             'categorias' => $categorias
         ]);
     }
